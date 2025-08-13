@@ -4,6 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Halaman Utama Mochil</title>
+
+  <!-- Open Graph untuk preview -->
+  <meta property="og:title" content="Halaman Utama Mochil" />
+  <meta property="og:description" content="Mainkan Mochil Game sekarang langsung dari Farcaster!" />
+  <meta property="og:image" content="https://rikhoput05.github.io/MOCHIL_2.00/BG.png" />
+  <meta property="og:url" content="https://rikhoput05.github.io/MOCHIL_2.00/index.html" />
+
+  <!-- Farcaster Frame -->
+  <meta name="fc:frame" content="vNext" />
+  <meta name="fc:frame:image" content="https://rikhoput05.github.io/MOCHIL_2.00/BG.png" />
+  <meta name="fc:frame:button:1" content="▶ Main Sekarang" />
+  <meta name="fc:frame:button:1:action" content="link" />
+  <meta name="fc:frame:button:1:target" content="https://rikhoput05.github.io/MOCHIL_2.00/index.html" />
+
   <style>
     html, body {
       height: 100%;
@@ -75,7 +89,7 @@
       cursor: pointer;
       opacity: 0.9;
       transition: transform 0.3s ease, opacity 0.3s ease;
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* bayangan bawah */
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
       border-radius: 10px;
     }
     .slide-container img:hover {
@@ -207,7 +221,6 @@
       window.location.href = 'game.html';
     }
 
-    // Element references
     const slideContainer = document.getElementById('slideContainer');
     const menuTrigger = document.getElementById('menuTrigger');
     const slideLB = document.getElementById('slideLB');
@@ -215,16 +228,13 @@
     const lbButton = document.getElementById('lbButton');
     const rwButton = document.getElementById('rwButton');
 
-    // Klik G3 → Slide kanan + rotasi + tutup semua slide kiri jika ditutup
     menuTrigger.addEventListener('click', () => {
       if (!menuTrigger.classList.contains('spinning')) {
         menuTrigger.classList.add('spinning');
 
-        // toggle slide kanan
         slideContainer.classList.toggle('show');
         menuTrigger.classList.toggle('shifted');
 
-        // kalau slide kanan ditutup, tutup semua slide kiri juga
         if (!slideContainer.classList.contains('show')) {
           slideLB.classList.remove('show');
           slideRW.classList.remove('show');
@@ -236,16 +246,14 @@
       }
     });
 
-    // Klik LB → buka slide kiri LB
     lbButton.addEventListener('click', () => {
       slideLB.classList.toggle('show');
-      slideRW.classList.remove('show'); // tutup slide RW jika LB dibuka
+      slideRW.classList.remove('show');
     });
 
-    // Klik Rewards → buka slide kiri Rewards
     rwButton.addEventListener('click', () => {
       slideRW.classList.toggle('show');
-      slideLB.classList.remove('show'); // tutup slide LB jika RW dibuka
+      slideLB.classList.remove('show');
     });
   </script>
 </body>
