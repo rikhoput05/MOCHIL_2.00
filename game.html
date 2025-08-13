@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- 🔹 Kunci viewport supaya tidak bisa pinch zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Mochil Pac-Man</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Hilangkan scroll */
+      touch-action: none; /* Cegah gesture default */
+      -ms-touch-action: none; /* Support untuk IE/Edge lama */
+    }
+    canvas {
+      display: block;
+    }
+    #scoreBoard {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <div id="scoreBoard">Score: 0</div>
+
+  <script>
+    // 🔹 Cegah pinch zoom & gesture bawaan
+    document.addEventListener('gesturestart', e => e.preventDefault());
+    document.addEventListener('gesturechange', e => e.preventDefault());
+    document.addEventListener('gestureend', e => e.preventDefault());
+
+    // 🔹 Cegah double tap zoom
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (e) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // 🔹 Fungsi simpan skor & kembali ke index
+    function simpanSkorDanKeluar(finalScore) {
+      let riwayat = JSON.parse(localStorage.getItem('riwayatSkor')) || [];
+      riwayat.push({
+        skor: finalScore,
+        tanggal: new Date().toLocaleString()
+      });
+      localStorage.setItem('riwayatSkor', JSON.stringify(riwayat));
+      window.location.href = 'index.html';
+    }
+
+    // 🔹 Contoh trigger gameOver dari game.js
+    // Nanti di game.js tinggal panggil:
+    // simpanSkorDanKeluar(score);
+  </script>
+
+  <script src="game.js"></script>
+</body>
+</html>
