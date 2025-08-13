@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Mochil Frame</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mochil Game</title>
 
-  <!-- Meta untuk Farcaster Frames -->
-  <meta property="og:title" content="Mainkan Mochil Sekarang!" />
-  <meta property="og:description" content="Klik untuk memulai permainan Mochil langsung di browser kamu!" />
-  <meta property="og:image" content="https://rikhoput05.github.io/MOCHIL_2.00/BG.png" />
+  <!-- Open Graph untuk preview -->
+  <meta property="og:title" content="Mochil Game - Play Now!" />
+  <meta property="og:description" content="Fun mini-game! Click and play now." />
+  <meta property="og:image" content="https://rikhoput05.github.io/MOCHIL_2.00/preview.png" />
+  <meta property="og:url" content="https://rikhoput05.github.io/MOCHIL_2.00/frame.html" />
 
-  <!-- Frame Action -->
+  <!-- Farcaster Frame -->
   <meta name="fc:frame" content="vNext" />
-  <meta name="fc:frame:image" content="https://rikhoput05.github.io/MOCHIL_2.00/BG.png" />
-  <meta name="fc:frame:button:1" content="Main Sekarang" />
+  <meta name="fc:frame:image" content="https://rikhoput05.github.io/MOCHIL_2.00/preview.png" />
+  <meta name="fc:frame:button:1" content="▶ Play Now" />
   <meta name="fc:frame:button:1:action" content="link" />
   <meta name="fc:frame:button:1:target" content="https://rikhoput05.github.io/MOCHIL_2.00/index.html" />
-
 </head>
 <body>
-  <h1>Mochil Frame</h1>
-  <p>Jika tidak otomatis, <a href="https://rikhoput05.github.io/MOCHIL_2.00/index.html">klik di sini untuk mulai</a>.</p>
+  <h1>Mochil Game</h1>
+  <p>This is the Farcaster Frame preview page for your game.</p>
+  <p><a href="https://rikhoput05.github.io/MOCHIL_2.00/index.html">Click here</a> if you are not redirected.</p>
+
+  <script>
+    // Redirect otomatis jika dibuka di luar Farcaster
+    if (window.top === window.self) {
+      window.location.href = "https://rikhoput05.github.io/MOCHIL_2.00/index.html";
+    }
+  </script>
 </body>
 </html>
